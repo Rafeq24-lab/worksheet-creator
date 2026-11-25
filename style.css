@@ -1,0 +1,1569 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --main-font: "Baloo Bhaijaan 2", sans-serif;
+    --primary-color: #008000;
+    --secondary-color: #FF8500;
+    --background-color: #F4F7F5;
+    --student-green: #E8F8E8;
+    --student-orange: #FFF0DC;
+    --correct-color: #008000;
+    --wrong-color: #B35A00;
+    --wrong-border: #FF8500;
+    --wrong-background: #FFF0DC;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    font-family: var(--main-font);
+    font-weight: 500;
+    background-color: var(--background-color);
+    color: #263238;
+}
+
+/* ==========================================
+   واجهة المعلم
+========================================== */
+
+header {
+    background-color: #FFFFFF;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+header img {
+    width: 180px;
+    max-width: 100%;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: var(--secondary-color);
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+p {
+    color: #607060;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.panel {
+    background: #FFFFFF;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    border-top: 5px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #D0D7D0;
+    border-radius: 8px;
+    font-family: var(--main-font);
+    font-size: 16px;
+    font-weight: 500;
+    background: #FAFCFA;
+    color: #263238;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 128, 0, 0.1);
+}
+
+textarea {
+    resize: vertical;
+}
+
+select {
+    cursor: pointer;
+    font-weight: 500;
+    min-height: 52px;
+}
+
+button {
+    font-family: var(--main-font);
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 24px;
+    transition: 0.2s;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+button:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+#addQuestionBtn {
+    width: 100%;
+    margin-top: 20px;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+#addQuestionBtn:hover {
+    background-color: #006400;
+}
+
+#addQuestionBtn:active {
+    transform: scale(0.99);
+}
+
+#questionsContainer {
+    margin-top: 20px;
+}
+
+.question-card {
+    background: #F8FBF8;
+    border: 1px solid #D0D7D0;
+    border-right: 5px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 15px;
+}
+
+.question-header h3 {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.question-type {
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+.answer-input {
+    margin-bottom: 12px;
+}
+
+.delete-question {
+    background: #FFF0DC;
+    color: #995000;
+    border: 1px solid #FF8500;
+    font-size: 14px;
+    padding: 10px 16px;
+}
+
+.delete-question:hover {
+    background: #FFE0B5;
+}
+
+/* ==========================================
+   زر المعاينة
+========================================== */
+
+.preview-section {
+    text-align: right;
+}
+
+#previewWorksheetBtn {
+    width: 100%;
+    margin-top: 10px;
+    background: var(--primary-color);
+    color: #FFFFFF;
+    font-size: 20px;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+#previewWorksheetBtn:hover {
+    background: #006400;
+    box-shadow: 0 5px 15px rgba(0, 128, 0, 0.18);
+}
+
+#previewWorksheetBtn:active {
+    transform: scale(0.99);
+}
+
+/* ==========================================
+   واجهة الطالب - التصميم المدمج
+========================================== */
+
+body.student-mode > header {
+    display: none;
+}
+
+#studentPreview {
+    min-height: 100vh;
+    padding: 10px 16px 25px;
+    background: linear-gradient(
+        135deg,
+        #E8F8E8 0%,
+        #F2FAE9 45%,
+        #FFF0DC 100%
+    );
+}
+
+.student-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   شعار وعناوين ورقة العمل
+========================================== */
+
+.student-header {
+    text-align: center;
+    padding: 0 8px 10px;
+}
+
+.student-header img {
+    display: block;
+    width: 150px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 3px;
+}
+
+.student-header h1 {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin: 2px 0;
+    line-height: 1.3;
+}
+
+#previewSubject {
+    color: #B35A00;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 1px 0;
+    line-height: 1.3;
+}
+
+#previewLesson {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 1px 0;
+    line-height: 1.3;
+}
+
+#previewInstructions {
+    font-size: 16px;
+    color: #526552;
+    line-height: 1.4;
+    margin: 4px 0;
+    overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   شريط التقدم
+========================================== */
+
+.student-progress {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.progress-track {
+    width: 100%;
+    height: 10px;
+    background: #DCEADC;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+#progressFill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #008000,
+        #70C900
+    );
+    border-radius: 30px;
+    transition: width 0.4s ease;
+}
+
+#progressText {
+    margin: 3px 0 0;
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+/* ==========================================
+   بطاقات الأسئلة
+========================================== */
+
+.student-question {
+    background: #FFFFFF;
+    border: 1px solid #DCE8DC;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.student-question-number {
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.student-question-title {
+    display: block;
+    color: #263238;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 4px 0 8px;
+    padding: 0;
+    min-height: 0;
+    height: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.student-question-score {
+    color: #A65300;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.student-answer-area {
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================
+   الإجابات النصية
+========================================== */
+
+.student-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+}
+
+.student-option {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    min-height: 44px;
+    padding: 6px 12px;
+    margin: 0;
+    background: #F5FAF5;
+    border: 2px solid #DCE8DC;
+    border-radius: 9px;
+    color: #263238;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: right;
+    cursor: pointer;
+    transition: 0.2s;
+    overflow-wrap: anywhere;
+}
+
+.student-option:hover {
+    border-color: var(--primary-color);
+    background: #EAF7EA;
+}
+
+.student-option.selected,
+.student-option:has(input:checked) {
+    border-color: var(--primary-color);
+    background: #DFF3DF;
+}
+
+.student-option input[type="radio"],
+.student-option input[type="checkbox"] {
+    width: 19px;
+    height: 19px;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    accent-color: var(--primary-color);
+}
+
+/* ==========================================
+   الإجابات المصورة
+========================================== */
+
+.student-image-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.student-image-option {
+    background: #F5FAF5;
+    border: 2px solid #DCE8DC;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: 0.2s;
+    overflow-wrap: anywhere;
+}
+
+.student-image-option img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto 4px;
+    opacity: 1;
+    filter: none;
+}
+
+.student-image-option:hover,
+.student-image-option.selected,
+.student-image-option:has(input:checked) {
+    border-color: var(--primary-color);
+    background: #DFF3DF;
+}
+
+.student-image-option input[type="radio"] {
+    width: 19px;
+    height: 19px;
+    padding: 0;
+    accent-color: var(--primary-color);
+}
+
+/* ==========================================
+   أكمل الفراغ
+========================================== */
+
+.student-blank-input {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px;
+    font-size: 19px;
+    border: 2px solid #DCE8DC;
+    border-radius: 9px;
+    background: #F5FAF5;
+}
+
+/* ==========================================
+   التوصيل والمطابقة
+========================================== */
+
+.student-matching {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 65px;
+}
+
+.student-match-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.student-match-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #F8FAFC;
+    border: 2px solid #DCE8DC;
+    border-radius: 9px;
+    padding: 8px;
+    min-height: 140px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.4;
+    color: #263238;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+    min-width: 0;
+}
+
+.student-matching:not(:has(img)) .student-match-item {
+    min-height: 60px;
+}
+
+.student-match-item img {
+    display: block;
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    opacity: 1;
+    filter: none;
+}
+
+.student-match-item.matched {
+    background: #F8FAFC;
+    border-color: #DCE8DC;
+}
+
+.student-match-item.selected {
+    background: #FFF0DC;
+    border-color: var(--secondary-color);
+}
+
+.student-match-item:disabled {
+    opacity: 1;
+    cursor: default;
+}
+
+.student-match-item:disabled img {
+    opacity: 1;
+    filter: none;
+}
+
+.match-mark {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.reset-matching {
+    font-size: 15px;
+    padding: 8px 15px;
+    min-height: 44px;
+}
+
+.reset-matching:disabled {
+    display: none !important;
+}
+
+/* ==========================================
+   طبقة خطوط التوصيل
+========================================== */
+
+.matching-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 2;
+}
+
+/* ==========================================
+   التصحيح
+========================================== */
+
+.student-option.correct,
+.student-image-option.correct,
+.student-match-item.correct,
+.student-blank-input.correct {
+    background: #E1F5E1 !important;
+    border-color: var(--correct-color) !important;
+}
+
+.student-option.wrong,
+.student-image-option.wrong,
+.student-match-item.wrong,
+.student-blank-input.wrong {
+    background: var(--wrong-background) !important;
+    border-color: var(--wrong-border) !important;
+    color: var(--wrong-color);
+}
+
+.student-option:has(input:disabled),
+.student-image-option:has(input:disabled),
+.student-blank-input:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.student-image-option:has(input:disabled) img {
+    opacity: 1;
+    filter: none;
+}
+
+.student-option.wrong input,
+.student-image-option.wrong input {
+    accent-color: var(--wrong-border);
+}
+
+/* ==========================================
+   تفاعل سلطان وجميلة
+========================================== */
+
+#studentFeedback,
+.question-feedback {
+    direction: rtl;
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 14px;
+    row-gap: 0;
+    text-align: right;
+    padding: 8px 12px;
+    margin: 10px 0 0;
+    background: #F5FAF5;
+    border: 1px solid #DCE8DC;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+#studentFeedback img,
+.question-feedback img {
+    display: block;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+    width: 120px;
+    height: 140px;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0;
+}
+
+#studentFeedback > :not(img),
+.question-feedback > :not(img) {
+    grid-column: 2;
+    margin: 0;
+}
+
+#studentFeedback > .feedback-content,
+.question-feedback > .feedback-content {
+    grid-row: 1;
+    align-self: center;
+}
+
+.feedback-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.feedback-content p,
+.feedback-content h3 {
+    margin: 0;
+}
+
+.feedback-correct {
+    color: var(--correct-color);
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.feedback-wrong {
+    color: var(--wrong-color) !important;
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+#studentFeedback p,
+.question-feedback p {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+#studentFeedback:has(.feedback-wrong),
+.question-feedback:has(.feedback-wrong) {
+    background: #FFF5E7;
+    border-color: #FFD29A;
+}
+
+#studentFeedback:has(.feedback-correct),
+.question-feedback:has(.feedback-correct) {
+    background: #EFF9EF;
+    border-color: #B8DDB8;
+}
+
+/* ==========================================
+   النتيجة النهائية
+========================================== */
+
+#studentResults {
+    background: linear-gradient(
+        145deg,
+        #FFFFFF,
+        #F0FBEF,
+        #FFF4E5
+    );
+    border: 2px solid var(--primary-color);
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    margin: 14px 0;
+    box-shadow: 0 6px 20px rgba(0, 128, 0, 0.12);
+}
+
+.result-title {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin: 3px 0;
+}
+
+.result-image {
+    display: block;
+    width: 300px;
+    max-width: 100%;
+    height: auto;
+    margin: 8px auto;
+    border-radius: 12px;
+}
+
+.result-circle {
+    --result-progress: 0%;
+
+    width: 140px;
+    height: 140px;
+    margin: 10px auto;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--primary-color) var(--result-progress),
+        #DCEADC 0
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-circle-inner {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-percentage {
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+.result-score {
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-size: 16px;
+    font-weight: 700;
+    color: #526552;
+}
+
+.result-message-title {
+    color: #B35A00;
+    font-size: 19px;
+    font-weight: 800;
+    margin-top: 8px;
+}
+
+.result-message {
+    color: var(--primary-color);
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 6px auto;
+    max-width: 600px;
+}
+
+/* ==========================================
+   أزرار واجهة الطالب
+========================================== */
+
+.student-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+#checkAnswersBtn,
+#retryWorksheetBtn {
+    background: var(--primary-color);
+    color: #FFFFFF;
+    font-size: 18px;
+    padding: 9px 20px;
+    border-radius: 9px;
+    min-height: 44px;
+}
+
+#checkAnswersBtn:hover,
+#retryWorksheetBtn:hover {
+    background: #006400;
+}
+
+#backToEditorBtn {
+    background: var(--secondary-color);
+    color: #263238;
+    font-size: 17px;
+    padding: 9px 18px;
+    border-radius: 9px;
+    min-height: 44px;
+}
+
+#backToEditorBtn:hover {
+    background: #F39735;
+}
+
+/* ==========================================
+   التابلت
+========================================== */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+    #studentPreview {
+        padding: 10px 14px 25px;
+    }
+
+    .student-container {
+        max-width: 800px;
+    }
+
+    .student-matching {
+        gap: 50px;
+    }
+
+    .student-image-option img {
+        height: 140px;
+    }
+}
+
+/* ==========================================
+   الشاشات الصغيرة والموبايل
+========================================== */
+
+@media (max-width: 600px) {
+
+    .panel {
+        padding: 20px;
+    }
+
+    .question-card {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    header img {
+        width: 150px;
+    }
+
+    #studentPreview {
+        padding: 8px 8px 20px;
+    }
+
+    .student-header {
+        padding: 0 5px 8px;
+    }
+
+    .student-header img {
+        width: 130px;
+    }
+
+    .student-header h1 {
+        font-size: 22px;
+    }
+
+    #previewSubject {
+        font-size: 20px;
+    }
+
+    #previewLesson {
+        font-size: 19px;
+    }
+
+    #previewInstructions {
+        font-size: 16px;
+    }
+
+    .student-progress {
+        padding: 8px 10px;
+        margin-bottom: 10px;
+    }
+
+    .progress-track {
+        height: 10px;
+    }
+
+    #progressText {
+        font-size: 14px;
+    }
+
+    .student-question {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .student-question-title {
+        font-size: 20px;
+        margin: 4px 0 8px;
+    }
+
+    .student-question-number {
+        font-size: 15px;
+    }
+
+    .student-question-score {
+        font-size: 14px;
+    }
+
+    .student-option {
+        font-size: 17px;
+        padding: 7px 9px;
+        min-height: 44px;
+    }
+
+    .student-image-options {
+        gap: 7px;
+    }
+
+    .student-image-option {
+        padding: 6px;
+        font-size: 16px;
+    }
+
+    .student-image-option img {
+        height: 115px;
+    }
+
+    .student-blank-input {
+        font-size: 18px;
+        padding: 9px;
+    }
+
+    .student-matching {
+        gap: 35px;
+    }
+
+    .student-match-column {
+        gap: 7px;
+    }
+
+    .student-match-item {
+        font-size: 17px;
+        padding: 6px;
+        min-height: 125px;
+    }
+
+    .student-match-item img {
+        height: 85px;
+    }
+
+    .student-matching:not(:has(img)) .student-match-item {
+        min-height: 60px;
+    }
+
+    .match-mark {
+        font-size: 12px;
+    }
+
+    #studentFeedback,
+    .question-feedback {
+        grid-template-columns: 90px minmax(0, 1fr);
+        column-gap: 10px;
+        padding: 8px;
+    }
+
+    #studentFeedback img,
+    .question-feedback img {
+        width: 90px;
+        height: 115px;
+    }
+
+    .feedback-correct,
+    .feedback-wrong {
+        font-size: 19px;
+    }
+
+    #studentFeedback p,
+    .question-feedback p {
+        font-size: 14px;
+    }
+
+    #studentResults {
+        padding: 14px 10px;
+    }
+
+    .result-title {
+        font-size: 23px;
+    }
+
+    .result-image {
+        width: 250px;
+    }
+
+    .result-circle {
+        width: 130px;
+        height: 130px;
+    }
+
+    .result-circle-inner {
+        width: 112px;
+        height: 112px;
+    }
+
+    .result-percentage {
+        font-size: 28px;
+    }
+
+    .result-message-title {
+        font-size: 18px;
+    }
+
+    .result-message {
+        font-size: 19px;
+    }
+
+    .student-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .student-actions button {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   الشاشات الصغيرة جداً
+========================================== */
+
+@media (max-width: 360px) {
+
+    .student-header img {
+        width: 115px;
+    }
+
+    .student-header h1 {
+        font-size: 20px;
+    }
+
+    .student-image-option img {
+        height: 100px;
+    }
+
+    .student-matching {
+        gap: 25px;
+    }
+
+    .student-match-item {
+        font-size: 16px;
+    }
+
+    #studentFeedback,
+    .question-feedback {
+        grid-template-columns: 80px minmax(0, 1fr);
+        column-gap: 8px;
+    }
+
+    #studentFeedback img,
+    .question-feedback img {
+        width: 80px;
+        height: 105px;
+    }
+}
+
+/* ==========================================
+   تقليل الحركة حسب إعدادات الجهاز
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* ==========================================
+   صورة غلاف ورقة العمل - واجهة المعلم
+========================================== */
+
+.cover-upload-section {
+    margin-top: 25px;
+    padding: 20px;
+    background: #F5FAF5;
+    border: 2px dashed #B8DDB8;
+    border-radius: 15px;
+}
+
+.cover-upload-section label {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 19px;
+}
+
+.cover-upload-hint,
+.cover-default-hint {
+    font-size: 15px;
+    margin: 5px 0 12px;
+}
+
+#worksheetCover {
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+#worksheetCover::file-selector-button {
+    background: #008000;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    margin-inline-end: 12px;
+    font-family: var(--main-font);
+    cursor: pointer;
+}
+
+.cover-preview-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#coverPreviewImage {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    max-height: 260px;
+    object-fit: contain;
+    border-radius: 15px;
+    margin: 0 auto 15px;
+}
+
+#removeCoverBtn {
+    background: #FFF0DC;
+    color: #A65300;
+    border: 1px solid #FF8500;
+    font-size: 15px;
+}
+
+#removeCoverBtn:hover {
+    background: #FFE0B5;
+}
+
+/* ==========================================
+   شاشة بداية التدريب
+========================================== */
+
+.student-container:has(
+    .student-welcome:not([hidden])
+) {
+    max-width: 1100px;
+}
+
+.student-welcome {
+    width: 100%;
+    padding: 15px 0 25px;
+    margin: 0 auto;
+}
+
+.welcome-brand {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.welcome-logo {
+    display: block;
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 8px;
+}
+
+.welcome-brand h1 {
+    color: #008000;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ==========================================
+   بطاقة مقدمة ورقة العمل
+========================================== */
+
+.welcome-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 30px;
+    padding: 35px;
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 0%,
+        #EAF8EA 55%,
+        #FFF0DC 100%
+    );
+    border: 1px solid #DCE8DC;
+    border-radius: 25px;
+    box-shadow: 0 8px 30px rgba(0, 128, 0, 0.08);
+}
+
+.welcome-content {
+    text-align: right;
+    min-width: 0;
+}
+
+.welcome-content #previewSubject {
+    display: inline-block;
+    background: #FFF0DC;
+    color: #A65300;
+    border: 1px solid #FFD29A;
+    border-radius: 30px;
+    padding: 5px 20px;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 15px;
+}
+
+.welcome-content #previewLesson {
+    color: #008000;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0 0 15px;
+    overflow-wrap: anywhere;
+}
+
+.welcome-content #previewInstructions {
+    color: #526552;
+    font-size: 20px;
+    line-height: 1.8;
+    margin: 0 0 25px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   صورة غلاف الدرس
+========================================== */
+
+.welcome-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+#studentCoverImage {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+    height: 320px;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+/* ==========================================
+   زر بدء التدريب
+========================================== */
+
+#startTrainingBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    min-height: 58px;
+    padding: 12px 35px;
+    background: #008000;
+    color: #FFFFFF;
+    font-family: var(--main-font);
+    font-size: 24px;
+    font-weight: 800;
+    border-radius: 14px;
+    box-shadow: 0 6px 15px rgba(0, 128, 0, 0.18);
+    transition: 0.2s;
+}
+
+#startTrainingBtn:hover {
+    background: #006400;
+    transform: translateY(-2px);
+}
+
+#startTrainingBtn:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================
+   ملخص عدد الأسئلة وأنواعها
+========================================== */
+
+.welcome-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    background: #FFFFFF;
+    border: 1px solid #DCE8DC;
+    border-radius: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.welcome-question-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #008000;
+    color: #FFFFFF;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.welcome-question-types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.welcome-type-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #EAF8EA;
+    color: #008000;
+    border: 1px solid #B8DDB8;
+    border-radius: 30px;
+    padding: 6px 15px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* ==========================================
+   العودة إلى محرر ورقة العمل
+========================================== */
+
+.welcome-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#welcomeBackToEditorBtn {
+    background: #FFF0DC;
+    color: #A65300;
+    border: 1px solid #FF8500;
+    border-radius: 10px;
+    font-size: 17px;
+    padding: 10px 22px;
+}
+
+#welcomeBackToEditorBtn:hover {
+    background: #FFE0B5;
+}
+
+/* ==========================================
+   شاشة الأسئلة بعد بدء التدريب
+========================================== */
+
+.student-training {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 5px;
+}
+
+/* ==========================================
+   التابلت
+========================================== */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+    .welcome-hero {
+        gap: 20px;
+        padding: 25px;
+    }
+
+    .welcome-content #previewLesson {
+        font-size: 32px;
+    }
+
+    #studentCoverImage {
+        height: 260px;
+    }
+
+    .welcome-content #previewInstructions {
+        font-size: 18px;
+    }
+}
+
+/* ==========================================
+   الموبايل والشاشات الصغيرة
+========================================== */
+
+@media (max-width: 600px) {
+
+    .student-welcome {
+        padding: 10px 5px 20px;
+    }
+
+    .welcome-logo {
+        width: 140px;
+    }
+
+    .welcome-brand h1 {
+        font-size: 23px;
+    }
+
+    .welcome-hero {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .welcome-visual {
+        grid-row: 1;
+    }
+
+    #studentCoverImage {
+        height: 200px;
+    }
+
+    .welcome-content {
+        text-align: center;
+    }
+
+    .welcome-content #previewSubject {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .welcome-content #previewLesson {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .welcome-content #previewInstructions {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    #startTrainingBtn {
+        width: 100%;
+        min-width: 0;
+        font-size: 22px;
+    }
+
+    .welcome-summary {
+        flex-direction: column;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .welcome-type-badge {
+        font-size: 13px;
+        padding: 5px 10px;
+    }
+
+    #welcomeBackToEditorBtn {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    #startTrainingBtn {
+        transition: none;
+    }
+
+    #startTrainingBtn:hover,
+    #startTrainingBtn:active {
+        transform: none;
+    }
+}

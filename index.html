@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>رفيق 24 - مع سلطان وجميلة</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- واجهة المعلم -->
+
+    <header>
+
+        <img src="assets/logo.png"
+             alt="شعار رفيق 24">
+
+        <h1>أبدع في إعداد أوراق العمل لطلابك</h1>
+
+        <h2>مع سلطان وجميلة</h2>
+
+        <p>
+            أنشئ أسئلتك ودع سلطان وجميلة يرافقان طلابك
+        </p>
+
+    </header>
+
+    <main class="container" id="teacherEditor">
+
+        <!-- بيانات ورقة العمل -->
+
+        <section class="panel">
+
+            <h2>هيا نتدرّب مع سلطان وجميلة</h2>
+
+            <label for="subject">
+                اسم المادة
+            </label>
+
+            
+<select id="subject">
+    <option value="">اختر المادة الدراسية</option>
+    <option value="اللغة العربية">اللغة العربية</option>
+    <option value="التربية الإسلامية">التربية الإسلامية</option>
+    <option value="الاجتماعيات">الاجتماعيات</option>
+    <option value="الكيمياء">الكيمياء</option>
+    <option value="العلوم">العلوم</option>
+    <option value="الفيزياء">الفيزياء</option>
+    <option value="الرياضيات">الرياضيات</option>
+    <option value="اللغة الإنجليزية">اللغة الإنجليزية</option>
+</select>
+
+
+            <label for="lesson">
+                عنوان الدرس
+            </label>
+
+            <input type="text"
+                   id="lesson"
+                   placeholder="مثال: الحرق">
+
+            <label for="instructions">
+                تعليمات للطالب
+            </label>
+
+            <textarea id="instructions"
+                      rows="3"
+                      placeholder="اقرأ السؤال جيدًا واختر الإجابة الصحيحة"></textarea>
+
+            <!-- رفع صورة غلاف ورقة العمل -->
+
+            <div class="cover-upload-section">
+
+                <label for="worksheetCover">
+
+                    صورة غلاف ورقة العمل (اختياري)
+
+                </label>
+
+                <p class="cover-upload-hint">
+
+                    اختر صورة مناسبة لموضوع الدرس
+                    لتظهر للطالب في شاشة بداية التدريب.
+
+                </p>
+
+                <input type="file"
+                       id="worksheetCover"
+                       accept="image/png,image/jpeg,image/webp">
+
+                <!-- معاينة صورة الغلاف -->
+
+                <div id="coverPreviewContainer"
+                     class="cover-preview-container"
+                     hidden>
+
+                    <img id="coverPreviewImage"
+                         alt="معاينة صورة الغلاف">
+
+                    <button type="button"
+                            id="removeCoverBtn">
+
+                        حذف صورة الغلاف
+
+                    </button>
+
+                </div>
+
+                <p class="cover-default-hint">
+
+                    إذا لم تختر صورة، سيظهر شعار
+                    رفيق 24 تلقائيًا.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- إضافة الأسئلة -->
+
+        <section class="panel questions-section">
+
+            <h2>إضافة الأسئلة</h2>
+
+            <label for="questionType">
+
+                اختر نوع السؤال
+
+            </label>
+
+            <select id="questionType">
+
+                <option value="text">
+
+                    اختيار من متعدد (إجابات نصية)
+
+                </option>
+
+                <option value="truefalse">
+
+                    صح أو خطأ
+
+                </option>
+
+                <option value="image">
+
+                    اختيار من متعدد (إجابات مصورة)
+
+                </option>
+
+                <option value="blank">
+
+                    أكمل الفراغ
+
+                </option>
+
+                <option value="match">
+
+                    التوصيل والمطابقة
+
+                </option>
+
+            </select>
+
+            <button type="button"
+                    id="addQuestionBtn">
+
+                + إضافة سؤال
+
+            </button>
+
+            <div id="questionsContainer"></div>
+
+        </section>
+
+        <!-- المعاينة والتصدير -->
+
+        <section class="panel preview-section">
+
+            <h2>ورقة العمل جاهزة</h2>
+
+            <p>
+
+                عاين ورقة العمل وتأكد من الأسئلة والإجابات
+                قبل تصديرها ومشاركتها مع طلابك.
+
+            </p>
+
+            <button type="button"
+                    id="previewWorksheetBtn">
+
+                👁 معاينة ورقة العمل
+
+            </button>
+
+            <button type="button"
+                    id="exportWorksheetBtn"
+                    style="
+                        width:100%;
+                        margin-top:15px;
+                        background:#FF8500;
+                        color:#263238;
+                        font-size:20px;
+                        padding:16px;
+                        border-radius:12px;
+                    ">
+
+                ↓ تصدير ورقة العمل HTML
+
+            </button>
+
+            <p id="exportStatus"
+               role="status"
+               aria-live="polite"
+               style="
+                   text-align:center;
+                   font-size:17px;
+                   margin:12px 0 0;
+               "
+               hidden>
+
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- واجهة الطالب -->
+
+    <section id="studentPreview" hidden>
+
+        <div class="student-container">
+
+            <!-- ===================================
+                 شاشة بداية ورقة العمل
+            ==================================== -->
+
+            <section id="studentWelcome"
+                     class="student-welcome">
+
+                <!-- شعار رفيق 24 -->
+
+                <div class="welcome-brand">
+
+                    <img src="assets/logo.png"
+                         class="welcome-logo"
+                         alt="شعار رفيق 24">
+
+                    <h1>
+
+                        هيا نتدرّب مع سلطان وجميلة
+
+                    </h1>
+
+                </div>
+
+                <!-- بطاقة مقدمة الدرس -->
+
+                <div class="welcome-hero">
+
+                    <!-- بيانات الدرس -->
+
+                    <div class="welcome-content">
+
+                        <h2 id="previewSubject"
+                            class="welcome-subject">
+
+                        </h2>
+
+                        <h3 id="previewLesson"
+                            class="welcome-lesson">
+
+                        </h3>
+
+                        <p id="previewInstructions"
+                           class="welcome-instructions">
+
+                        </p>
+
+                        <button type="button"
+                                id="startTrainingBtn">
+
+                            ابدأ التدريب
+
+                        </button>
+
+                    </div>
+
+                    <!-- صورة غلاف الدرس -->
+
+                    <div class="welcome-visual">
+
+                        <img id="studentCoverImage"
+                             src="assets/logo.png"
+                             alt="غلاف ورقة العمل">
+
+                    </div>
+
+                </div>
+
+                <!-- عدد الأسئلة وأنواعها -->
+
+                <div class="welcome-summary">
+
+                    <span id="welcomeQuestionCount"
+                          class="welcome-question-count">
+
+                    </span>
+
+                    <div id="welcomeQuestionTypes"
+                         class="welcome-question-types">
+
+                    </div>
+
+                </div>
+
+                <!-- العودة إلى محرر المعلم -->
+
+                <div class="welcome-actions">
+
+                    <button type="button"
+                            id="welcomeBackToEditorBtn">
+
+                        العودة إلى محرر ورقة العمل
+
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- ===================================
+                 شاشة التدريب والأسئلة
+            ==================================== -->
+
+            <section id="studentTraining"
+                     class="student-training"
+                     hidden>
+
+                <!-- شريط التقدم -->
+
+                <div class="student-progress">
+
+                    <div class="progress-track">
+
+                        <div id="progressFill"></div>
+
+                    </div>
+
+                    <p id="progressText"></p>
+
+                </div>
+
+                <!-- أسئلة الطالب -->
+
+                <div id="studentQuestions"></div>
+
+                <!-- الرسائل التشجيعية -->
+
+                <div id="studentFeedback" hidden></div>
+
+                <!-- النتيجة النهائية -->
+
+                <div id="studentResults" hidden></div>
+
+                <!-- أزرار الطالب -->
+
+                <div class="student-actions">
+
+                    <button type="button"
+                            id="checkAnswersBtn">
+
+                        تحقق من إجاباتك
+
+                    </button>
+
+                    <button type="button"
+                            id="retryWorksheetBtn"
+                            hidden>
+
+                        إعادة المحاولة
+
+                    </button>
+
+                    <button type="button"
+                            id="backToEditorBtn">
+
+                        العودة إلى محرر ورقة العمل
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
