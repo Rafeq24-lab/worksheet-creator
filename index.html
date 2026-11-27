@@ -1,11 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
@@ -18,7 +15,6 @@
             display: none !important;
         }
     </style>
-
 </head>
 
 <body>
@@ -26,7 +22,6 @@
     <!-- واجهة المعلم -->
 
     <header>
-
         <img src="assets/logo.png"
              alt="شعار رفيق 24">
 
@@ -37,7 +32,6 @@
         <p>
             أنشئ أسئلتك ودع سلطان وجميلة يرافقان طلابك
         </p>
-
     </header>
 
     <main class="container" id="teacherEditor">
@@ -52,19 +46,17 @@
                 اسم المادة
             </label>
 
-            
-<select id="subject">
-    <option value="">اختر المادة الدراسية</option>
-    <option value="اللغة العربية">اللغة العربية</option>
-    <option value="التربية الإسلامية">التربية الإسلامية</option>
-    <option value="الاجتماعيات">الاجتماعيات</option>
-    <option value="الكيمياء">الكيمياء</option>
-    <option value="العلوم">العلوم</option>
-    <option value="الفيزياء">الفيزياء</option>
-    <option value="الرياضيات">الرياضيات</option>
-    <option value="اللغة الإنجليزية">اللغة الإنجليزية</option>
-</select>
-
+            <select id="subject">
+                <option value="">اختر المادة الدراسية</option>
+                <option value="اللغة العربية">اللغة العربية</option>
+                <option value="التربية الإسلامية">التربية الإسلامية</option>
+                <option value="الاجتماعيات">الاجتماعيات</option>
+                <option value="الكيمياء">الكيمياء</option>
+                <option value="العلوم">العلوم</option>
+                <option value="الفيزياء">الفيزياء</option>
+                <option value="الرياضيات">الرياضيات</option>
+                <option value="اللغة الإنجليزية">اللغة الإنجليزية</option>
+            </select>
 
             <label for="lesson">
                 عنوان الدرس
@@ -72,7 +64,7 @@
 
             <input type="text"
                    id="lesson"
-                   placeholder="مثال: الحرق">
+                   placeholder="مثال: الحيوانات">
 
             <label for="instructions">
                 تعليمات للطالب
@@ -80,30 +72,24 @@
 
             <textarea id="instructions"
                       rows="3"
-                      placeholder="اقرأ السؤال جيدًا واختر الإجابة الصحيحة"></textarea>
+                      placeholder="اقرأ الأسئلة جيدًا ثم أجب عنها"></textarea>
 
             <!-- رفع صورة غلاف ورقة العمل -->
 
             <div class="cover-upload-section">
 
                 <label for="worksheetCover">
-
                     صورة غلاف ورقة العمل (اختياري)
-
                 </label>
 
                 <p class="cover-upload-hint">
-
                     اختر صورة مناسبة لموضوع الدرس
                     لتظهر للطالب في شاشة بداية التدريب.
-
                 </p>
 
                 <input type="file"
                        id="worksheetCover"
                        accept="image/png,image/jpeg,image/webp">
-
-                <!-- معاينة صورة الغلاف -->
 
                 <div id="coverPreviewContainer"
                      class="cover-preview-container"
@@ -114,18 +100,14 @@
 
                     <button type="button"
                             id="removeCoverBtn">
-
                         حذف صورة الغلاف
-
                     </button>
 
                 </div>
 
                 <p class="cover-default-hint">
-
                     إذا لم تختر صورة، سيظهر شعار
                     رفيق 24 تلقائيًا.
-
                 </p>
 
             </div>
@@ -138,52 +120,94 @@
 
             <h2>إضافة الأسئلة</h2>
 
-            <label for="questionType">
+            <!-- شريط الأدوات: يبقى ظاهرًا أثناء التمرير -->
 
-                اختر نوع السؤال
+            <div class="questions-toolbar" id="questionsToolbar">
 
-            </label>
+                <div class="toolbar-row">
 
-            <select id="questionType">
+                    <div class="toolbar-type">
 
-                <option value="text">
+                        <label for="questionType">
+                            اختر نوع السؤال
+                        </label>
 
-                    اختيار من متعدد (إجابات نصية)
+                        <select id="questionType">
 
-                </option>
+                            <option value="text">
+                                اختيار من متعدد (إجابات نصية)
+                            </option>
 
-                <option value="truefalse">
+                            <option value="image">
+                                اختيار من متعدد (إجابات مصورة)
+                            </option>
 
-                    صح أو خطأ
+                            <option value="truefalse">
+                                صح أو خطأ
+                            </option>
 
-                </option>
+                            <option value="blank">
+                                أكمل الفراغ
+                            </option>
 
-                <option value="image">
+                            <option value="match">
+                                التوصيل والمطابقة
+                            </option>
 
-                    اختيار من متعدد (إجابات مصورة)
+                            <option value="قطعة وأسئلة">
+                                قطعة وأسئلة
+                            </option>
 
-                </option>
+                            <option value="wordbank">
+                                بنك الكلمات
+                            </option>
 
-                <option value="blank">
+                        </select>
 
-                    أكمل الفراغ
+                    </div>
 
-                </option>
+                    <button type="button"
+                            id="addQuestionBtn">
+                        + إضافة سؤال
+                    </button>
 
-                <option value="match">
+                </div>
 
-                    التوصيل والمطابقة
+                <div class="toolbar-row toolbar-secondary">
 
-                </option>
+                    <button type="button"
+                            id="collapseAllBtn"
+                            class="toolbar-btn">
+                        ▲ طي الكل
+                    </button>
 
-            </select>
+                    <button type="button"
+                            id="expandAllBtn"
+                            class="toolbar-btn">
+                        ▼ توسيع الكل
+                    </button>
 
-            <button type="button"
-                    id="addQuestionBtn">
+                    <span id="worksheetStats"
+                          class="worksheet-stats"
+                          aria-live="polite"></span>
 
-                + إضافة سؤال
+                </div>
 
-            </button>
+                <div id="validationBanner"
+                     role="alert"
+                     hidden>
+
+                    <span id="validationText"></span>
+
+                    <button type="button"
+                            id="validationCloseBtn"
+                            aria-label="إغلاق التنبيه">
+                        ×
+                    </button>
+
+                </div>
+
+            </div>
 
             <div id="questionsContainer"></div>
 
@@ -196,17 +220,13 @@
             <h2>ورقة العمل جاهزة</h2>
 
             <p>
-
                 عاين ورقة العمل وتأكد من الأسئلة والإجابات
                 قبل تصديرها ومشاركتها مع طلابك.
-
             </p>
 
             <button type="button"
                     id="previewWorksheetBtn">
-
                 👁 معاينة ورقة العمل
-
             </button>
 
             <button type="button"
@@ -220,9 +240,7 @@
                         padding:16px;
                         border-radius:12px;
                     ">
-
                 ↓ تصدير ورقة العمل HTML
-
             </button>
 
             <p id="exportStatus"
@@ -234,7 +252,6 @@
                    margin:12px 0 0;
                "
                hidden>
-
             </p>
 
         </section>
@@ -247,14 +264,10 @@
 
         <div class="student-container">
 
-            <!-- ===================================
-                 شاشة بداية ورقة العمل
-            ==================================== -->
+            <!-- شاشة بداية ورقة العمل -->
 
             <section id="studentWelcome"
                      class="student-welcome">
-
-                <!-- شعار رفيق 24 -->
 
                 <div class="welcome-brand">
 
@@ -263,9 +276,7 @@
                          alt="شعار رفيق 24">
 
                     <h1>
-
                         هيا نتدرّب مع سلطان وجميلة
-
                     </h1>
 
                 </div>
@@ -274,35 +285,26 @@
 
                 <div class="welcome-hero">
 
-                    <!-- بيانات الدرس -->
-
                     <div class="welcome-content">
 
                         <h2 id="previewSubject"
                             class="welcome-subject">
-
                         </h2>
 
                         <h3 id="previewLesson"
                             class="welcome-lesson">
-
                         </h3>
 
                         <p id="previewInstructions"
                            class="welcome-instructions">
-
                         </p>
 
                         <button type="button"
                                 id="startTrainingBtn">
-
                             ابدأ التدريب
-
                         </button>
 
                     </div>
-
-                    <!-- صورة غلاف الدرس -->
 
                     <div class="welcome-visual">
 
@@ -320,34 +322,26 @@
 
                     <span id="welcomeQuestionCount"
                           class="welcome-question-count">
-
                     </span>
 
                     <div id="welcomeQuestionTypes"
                          class="welcome-question-types">
-
                     </div>
 
                 </div>
-
-                <!-- العودة إلى محرر المعلم -->
 
                 <div class="welcome-actions">
 
                     <button type="button"
                             id="welcomeBackToEditorBtn">
-
                         العودة إلى محرر ورقة العمل
-
                     </button>
 
                 </div>
 
             </section>
 
-            <!-- ===================================
-                 شاشة التدريب والأسئلة
-            ==================================== -->
+            <!-- شاشة التدريب والأسئلة -->
 
             <section id="studentTraining"
                      class="student-training"
@@ -385,24 +379,18 @@
 
                     <button type="button"
                             id="checkAnswersBtn">
-
                         تحقق من إجاباتك
-
                     </button>
 
                     <button type="button"
                             id="retryWorksheetBtn"
                             hidden>
-
                         إعادة المحاولة
-
                     </button>
 
                     <button type="button"
                             id="backToEditorBtn">
-
                         العودة إلى محرر ورقة العمل
-
                     </button>
 
                 </div>
